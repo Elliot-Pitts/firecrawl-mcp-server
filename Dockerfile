@@ -35,4 +35,4 @@ RUN npm ci --omit=dev --ignore-scripts
 
 
 # Specify the command to run the application
-ENTRYPOINT ["sh","-lc","MCP_HTTP_PORT=${PORT:-3000} npx -y firecrawl-mcp"]
+ENTRYPOINT ["node", "dist/index.js"]
