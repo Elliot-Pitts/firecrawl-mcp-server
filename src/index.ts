@@ -1405,6 +1405,15 @@ async function runSSELocalServer() {
   let transport: SSEServerTransport | null = null;
   const app = express();
 
+  app.get('/', async (req, res) => {
+    transport = new SSEServerTransport(`/messages`, res);
+    res.on('close', () => {
+      transport = null;
+    });
+    await server.connect(transport);
+  });
+
+
   app.get('/sse', async (req, res) => {
     transport = new SSEServerTransport(`/messages`, res);
     res.on('close', () => {
