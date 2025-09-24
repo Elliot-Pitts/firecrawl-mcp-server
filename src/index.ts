@@ -971,6 +971,7 @@ async function withRetry<T>(
 server.setRequestHandler(
   ListToolsRequestSchema,
   async function listToolsRequestHandler() {
+    console.log('Getting Tools');
     return {
       tools: [
         SCRAPE_TOOL,
